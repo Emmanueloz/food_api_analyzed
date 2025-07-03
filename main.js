@@ -55,11 +55,18 @@ function renderResult(data) {
     html += `<div class='nutrition-bar'><div class='bar bar-protein' style='width:${Math.min(100, data.nutrition.protein.value * 3)}%'></div><span class='nutrition-value'>${data.nutrition.protein.value}g proteína</span></div>`;
     html += `<div class='nutrition-bar'><div class='bar bar-carbs' style='width:${Math.min(100, data.nutrition.carbs.value * 3)}%'></div><span class='nutrition-value'>${data.nutrition.carbs.value}g carbohidratos</span></div>`;
     if (data.recipes && data.recipes.length > 0) {
-        html += `<h3>Recetas sugeridas</h3><ul>`;
+        html += `<h3>Recetas sugeridas</h3>`;
+        html += `<div class='recipes-grid'>`;
         data.recipes.forEach(r => {
-            html += `<li><a href='${r.url}' target='_blank'>${r.title}</a></li>`;
+            const imgUrl = `https://spoonacular.com/recipeImages/${r.id}-240x150.${r.imageType}`;
+            html += `<div class='recipe-card'>
+                        <a href='${r.url}' target='_blank'>
+                            <img src='${imgUrl}' alt='${r.title}' class='recipe-img'/>
+                            <div class='recipe-title'>${r.title}</div>
+                        </a>
+                    </div>`;
         });
-        html += `</ul>`;
+        html += `</div>`;
     }
     resultContainer.innerHTML = html;
 } 

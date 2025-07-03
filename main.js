@@ -47,7 +47,7 @@ function renderResult(data) {
         return;
     }
     let html = `<h2>Resultado</h2>`;
-    html += `<p><b>Plato:</b> ${data.category.name.replace('_', ' ')}<br>`;
+    html += `<p><b>Categoria:</b> ${data.category.name.replace('_', ' ')}<br>`;
     html += `<b>Probabilidad:</b> ${(data.category.probability * 100).toFixed(1)}%</p>`;
     html += `<h3>Perfil nutricional promedio</h3>`;
     html += `<div class='nutrition-bar'><div class='bar bar-calories' style='width:${Math.min(100, data.nutrition.calories.value / 8)}%'></div><span class='nutrition-value'>${data.nutrition.calories.value} kcal</span></div>`;
